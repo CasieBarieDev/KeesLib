@@ -2,7 +2,7 @@ package me.casiebarie.keeslib;
 
 /**
  * An enum with all the bukkitversions with {@code IsLegacy} to show if it is a legacy version.
- * @version 1.0.0
+ * @version 1.0.1
  * @since 1.0.0
  */
 public enum BukkitVersions {
@@ -25,7 +25,8 @@ public enum BukkitVersions {
 	v1_18_R1(false),
 	v1_18_R2(false),
 	v1_19_R1(false),
-	v1_19_R2(false);
+	v1_19_R2(false),
+	v1_20_R1(false);
 
 	final Boolean isLegacy;
 	BukkitVersions(Boolean isLegacy) {this.isLegacy = isLegacy;}

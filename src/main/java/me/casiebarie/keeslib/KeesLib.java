@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 /**
  * A simple library for my plugins!
  * @author CasieBarie
- * @version 1.0.0
+ * @version 1.0.1
  */
 public class KeesLib {
 	final JavaPlugin plugin;
@@ -57,7 +57,7 @@ public class KeesLib {
 	 * @return {@code true} If <a href="https://www.spigotmc.org/resources/vault.34315/">Vault</a> is enabled and all the servicemanagers are registered.
 	 * @since 1.0.0
 	 */
-	public boolean hasVault(Boolean economy, Boolean permissions, Boolean chat) {
+	public boolean hasVault(@Nonnull Boolean economy, @Nonnull Boolean permissions, @Nonnull Boolean chat) {
 		if(plugin.getServer().getPluginManager().getPlugin("Vault") == null) {return false;}
 		ArrayList<RegisteredServiceProvider> providers = new ArrayList<>();
 		if(economy) {providers.add(plugin.getServer().getServicesManager().getRegistration(Economy.class));}
@@ -85,7 +85,7 @@ public class KeesLib {
 	 * @return Translated message.
 	 * @since 1.0.0
 	 */
-	public String hex(String msg) {
+	public String hex(@Nonnull String msg) {
 		Pattern pattern = Pattern.compile("#[a-fA-F\\d]{6}");
 		Matcher matcher = pattern.matcher(msg);
 		while(matcher.find()) {
