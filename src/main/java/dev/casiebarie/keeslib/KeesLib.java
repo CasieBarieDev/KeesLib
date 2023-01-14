@@ -1,4 +1,4 @@
-package me.casiebarie.keeslib;
+package dev.casiebarie.keeslib;
 
 import net.md_5.bungee.api.ChatColor;
 import net.milkbowl.vault.chat.Chat;
@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 /**
  * A simple library for my plugins!
  * @author CasieBarie
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class KeesLib {
 	final JavaPlugin plugin;

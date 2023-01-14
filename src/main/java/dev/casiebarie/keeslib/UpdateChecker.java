@@ -1,4 +1,4 @@
-package me.casiebarie.keeslib;
+package dev.casiebarie.keeslib;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;

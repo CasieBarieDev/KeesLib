@@ -1,8 +1,8 @@
-package me.casiebarie.keeslib;
+package dev.casiebarie.keeslib;
 
 /**
  * An enum with all the bukkitversions with {@code IsLegacy} to show if it is a legacy version.
- * @version 1.0.1
+ * @version 1.0.2
  * @since 1.0.0
  */
 public enum BukkitVersions {
