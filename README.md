@@ -3,4 +3,4 @@
 <br/>
 
 A simple library for my plugins!  
-More info soon on my [website](https://www.casiebarie.dev/404).
+More info soon on my [website](https://www.casiebarie.dev/Plugins/KeesLib).
