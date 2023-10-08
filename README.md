@@ -7,7 +7,7 @@ A simple library for my plugins!
 <br/>
 
 ## Patch Notes:
-### [v1.1.0](https://github.com/CasieBarieDev/KeesLib/releases/tag/1.0.3)
+### [v1.1.0](https://github.com/CasieBarieDev/KeesLib/releases/tag/1.1.0)
 - **Added** | A new builder for the UpdateChecker.
 - **Added** | `createLogger()` - Changes the prefix of the plugin logger to the value 'Prefix:' in the plugin.yml with ChatColor support.
 - **Changed** | `isLegacy(Double lowestVerion, Double highestVersion)` - This will no longer use the BukkitVersions enum and no longer shuts down the plugin when the version is too high.
