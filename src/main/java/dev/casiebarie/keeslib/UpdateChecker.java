@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 
 public class UpdateChecker implements Listener {
 	final JavaPlugin plugin; final KeesLib.UpdateChecker values;
-	String spigotV, lastCheckV; Boolean firstcheck = true, hasNew = false;
+	String spigotV, lastCheckV; boolean firstcheck = true, hasNew = false;
 	private void send(String msg) {Bukkit.getConsoleSender().sendMessage(msg);}
 	protected UpdateChecker(JavaPlugin plugin, KeesLib.UpdateChecker values) {
 		this.plugin = plugin; this.values = values;
@@ -43,7 +43,7 @@ public class UpdateChecker implements Listener {
 			if(spigotVInt == currentVInt) {if(firstcheck) {plugin.getLogger().info(String.format("You are using the most recent version. (v%s)", currentV));} firstcheck = false; return;}
 			if(lastCheckV.equals(spigotV)) {return;} lastCheckV = spigotV; hasNew = true;
 			List<String> lines = new ArrayList<>();
-			lines.add(String.format("There is a new version of &b%s %savailable!", plugin.getName(), values.textColor));
+			lines.add(String.format("There is a new version of §b%s %savailable!", plugin.getName(), values.textColor));
 			lines.add("");
 			lines.add(String.format("Current version: §6v%s", currentV));
 			lines.add(String.format("    New version: §av%s", spigotV));

@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * A simple library for my plugins!
  * @author CasieBarie
- * @version 1.1.0
+ * @version 1.2.0
  */
 public class KeesLib {
 	final JavaPlugin plugin;
@@ -81,15 +81,28 @@ public class KeesLib {
 		} return ChatColor.translateAlternateColorCodes('&', msg);
 	}
 	/**
+	 * Rounds the specified number and returns it as a {@link String}. (E.g. 3748 -> 3.7K)
+	 * @param number The number to round.
+	 * @return The fromatted String.
+	 * @since 1.2.0
+	 */
+	public String roundNumber(@Nonnull Number number) {
+		if(number == null) {return "";}
+		long numberLong = number.longValue();
+		if(numberLong < 1000) return "" + numberLong;
+		int exp = (int) (Math.log(numberLong) / Math.log(1000));
+		return String.format("%.1f%c", numberLong / Math.pow(1000, exp), "kMGTPE".charAt(exp-1));
+	}
+	/**
 	 * Changes the prefix of the plugin logger to the value {@code Prefix:} in the {@code plugin.yml} with {@link ChatColor} support.
 	 * @return a new instance of {@link Logger}.
-	 * @since 1.0.3
+	 * @since 1.1.0
 	 */
 	public Logger createLogger() {return new Log(plugin);}
 	/**
 	 * Fancy updatechecker.
 	 * @param resourceID Recource ID of Spigot.
-	 * @return the new reference to the {@link UpdateChecker}.
+	 * @return a new reference to the {@link UpdateChecker}.
 	 * @since 1.0.0
 	 */
 	public UpdateChecker updateChecker(@Nonnull Integer resourceID) {return new UpdateChecker(resourceID);}

@@ -7,6 +7,12 @@ A simple library for my plugins!
 <br/>
 
 ## Patch Notes:
+### [v1.2.0](https://github.com/CasieBarieDev/KeesLib/releases/tag/1.2.0)
+- **Added** | `roundNumber(Number number)` - Rounds the specified number and returns it as a String. (E.g. 3748 -> 3.7K)
+- **Fix** | A '&' was not a '§' in the UpdateChecker.
+- **Typo** | A @since version was the wrong version in the javadoc.
+- **Optimization** | Changed some objects to primitives.
+
 ### [v1.1.0](https://github.com/CasieBarieDev/KeesLib/releases/tag/1.1.0)
 - **Added** | A new builder for the UpdateChecker.
 - **Added** | `createLogger()` - Changes the prefix of the plugin logger to the value 'Prefix:' in the plugin.yml with ChatColor support.
