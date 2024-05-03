@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * A simple library for my plugins!
  * @author CasieBarie
- * @version 1.2.0
+ * @version 1.2.1
  */
 public class KeesLib {
 	final JavaPlugin plugin;
@@ -81,7 +81,7 @@ public class KeesLib {
 		} return ChatColor.translateAlternateColorCodes('&', msg);
 	}
 	/**
-	 * Rounds the specified number and returns it as a {@link String}. (E.g. 3748 -> 3.7K)
+	 * Rounds the specified number and returns it as a {@link String}. (E.g. 3748 to 3.7K)
 	 * @param number The number to round.
 	 * @return The fromatted String.
 	 * @since 1.2.0
@@ -116,7 +116,7 @@ public class KeesLib {
 		/**
 		 * Sets the border color of the message.
 		 * @param color Default: {@code ChatColor.WHITE}.
-		 * @return a reference to this object.
+		 * @return a reference to this object for easy chaining.
 		 */
 		public UpdateChecker setBorderColor(@Nonnull ChatColor color) {borderColor = color; return this;}
 		/**
