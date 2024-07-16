@@ -19,13 +19,13 @@ import java.util.regex.Pattern;
 /**
  * A simple library for my plugins!
  * @author CasieBarie
- * @version 1.2.1
+ * @version 1.3.0
  */
 public class KeesLib {
 	final JavaPlugin plugin;
 	/**
 	 * A simple library for my plugins!
-	 * @param plugin Your main class that {@code extends} {@link JavaPlugin}.
+	 * @param plugin Your main class that {@code extends} {@linkplain org.bukkit.plugin.java.JavaPlugin}.
 	 */
 	public KeesLib(@Nonnull JavaPlugin plugin) {this.plugin = plugin;}
 	/**
@@ -35,7 +35,7 @@ public class KeesLib {
 	public boolean hasPlaceholerAPI() {return Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;}
 	/**
 	 * Checks if the server is legacy and disables the plugin if the lowest version is not supported.
-	 * @param lowestVersion The lowest supported minecraft version (Eg. 1.8)
+	 * @param lowestVersion The lowest supported minecraft version (E.g. 1.8)
 	 * @param highestVersion The highest tested minecraft version.
 	 * @return {@code true} if the server has a legacy version.
 	 * @since 1.0.0
@@ -66,7 +66,7 @@ public class KeesLib {
 		return !providers.contains(null);
 	}
 	/**
-	 * Translates all the {@code #HEX} codes in the message to {@link ChatColor} codes.
+	 * Translates all the {@code #HEX} codes in the message to {@linkplain net.md_5.bungee.api.ChatColor} codes.
 	 * @param msg Message to translate.
 	 * @return Translated message.
 	 * @since 1.0.0
@@ -81,7 +81,7 @@ public class KeesLib {
 		} return ChatColor.translateAlternateColorCodes('&', msg);
 	}
 	/**
-	 * Rounds the specified number and returns it as a {@link String}. (E.g. 3748 to 3.7K)
+	 * Rounds the specified number and returns it as a {@linkplain String}. (E.g. 3748 to 3.7K)
 	 * @param number The number to round.
 	 * @return The fromatted String.
 	 * @since 1.2.0
@@ -94,47 +94,93 @@ public class KeesLib {
 		return String.format("%.1f%c", numberLong / Math.pow(1000, exp), "kMGTPE".charAt(exp-1));
 	}
 	/**
-	 * Changes the prefix of the plugin logger to the value {@code Prefix:} in the {@code plugin.yml} with {@link ChatColor} support.
-	 * @return a new instance of {@link Logger}.
+	 * Changes the prefix of the plugin logger to the value {@code Prefix:} in the {@code plugin.yml} with {@linkplain net.md_5.bungee.api.ChatColor} support.
+	 * @return a new instance of {@linkplain Logger}.
 	 * @since 1.1.0
 	 */
 	public Logger createLogger() {return new Log(plugin);}
 	/**
 	 * Fancy updatechecker.
 	 * @param resourceID Recource ID of Spigot.
-	 * @return a new reference to the {@link UpdateChecker}.
+	 * @return a new reference to the {@linkplain UpdateChecker}.
 	 * @since 1.0.0
 	 */
 	public UpdateChecker updateChecker(@Nonnull Integer resourceID) {return new UpdateChecker(resourceID);}
  	public class UpdateChecker {
 		protected Integer recourceID;
-		protected ChatColor borderColor = ChatColor.WHITE, textColor = ChatColor.WHITE;
+		protected String pluginName = plugin.getName();
+		protected ChatColor
+			borderColor = ChatColor.GOLD,
+			textColor = ChatColor.YELLOW,
+			nameColor = ChatColor.DARK_AQUA,
+			newVersionColor = ChatColor.GREEN,
+			currentVersionColor = ChatColor.RED,
+			urlColor = ChatColor.DARK_GRAY;
 		protected Character character = '#';
 		protected String permission = "";
 		protected Long frequency = 1L;
 		protected TimeUnit timeUnit = TimeUnit.HOURS;
 		/**
-		 * Sets the border color of the message.
-		 * @param color Default: {@code ChatColor.WHITE}.
+		 * Sets the plugin name displayed in the message.
+		 * @param name Default: {@linkplain org.bukkit.plugin.java.JavaPlugin#getName()}.
 		 * @return a reference to this object for easy chaining.
+		 * @since 1.3.0
+		 */
+		public UpdateChecker setPluginName(@Nonnull String name) {this.pluginName = name; return this;}
+		/**
+		 * Sets the border color of the message.
+		 * @param color Default: {@linkplain net.md_5.bungee.api.ChatColor#GOLD}.
+		 * @return a reference to this object for easy chaining.
+		 * @since 1.1.0
 		 */
 		public UpdateChecker setBorderColor(@Nonnull ChatColor color) {borderColor = color; return this;}
 		/**
 		 * Sets the text color of the message.
-		 * @param color Default: {@code ChatColor.WHITE}.
+		 * @param color Default: {@linkplain net.md_5.bungee.api.ChatColor#YELLOW}.
 		 * @return a reference to this object.
+		 * @since 1.1.0
 		 */
 		public UpdateChecker setTextColor(@Nonnull ChatColor color) {textColor = color; return this;}
 		/**
-		 * Sets the bordor character surrounding the message.
-		 * @param character Default: {@code @}.
+		 * Sets the color of the plugin name in the message.
+		 * @param color Default: {@linkplain net.md_5.bungee.api.ChatColor#AQUA}.
 		 * @return a reference to this object.
+		 * @since 1.3.0
+		 */
+		public UpdateChecker setNameColor(@Nonnull ChatColor color) {nameColor = color; return this;}
+		/**
+		 * Sets the color of the new version.
+		 * @param color Default: {@linkplain net.md_5.bungee.api.ChatColor#GREEN}.
+		 * @return a reference to this object.
+		 * @since 1.3.0
+		 */
+		public UpdateChecker setNewVersionColor(@Nonnull ChatColor color) {newVersionColor = color; return this;}
+		/**
+		 * Sets the color of the current version.
+		 * @param color Default: {@linkplain net.md_5.bungee.api.ChatColor#RED}.
+		 * @return a reference to this object.
+		 * @since 1.3.0
+		 */
+		public UpdateChecker setCurrentVersionColor(@Nonnull ChatColor color) {currentVersionColor = color; return this;}
+		/**
+		 * Sets the color of the download url.
+		 * @param color Default: {@linkplain net.md_5.bungee.api.ChatColor#DARK_GRAY}.
+		 * @return a reference to this object.
+		 * @since 1.3.0
+		 */
+		public UpdateChecker setUrlColor(@Nonnull ChatColor color) {urlColor = color; return this;}
+		/**
+		 * Sets the bordor character surrounding the message.
+		 * @param character Default: {@code #}.
+		 * @return a reference to this object.
+		 * @since 1.1.0
 		 */
 		public UpdateChecker setBorderCharacter(@Nonnull Character character) {this.character = character; return this;}
 		/**
 		 * The permission a player must have to receive the update notice ingame.
 		 * @param permission Default: {@code ""}.
 		 * @return a reference to this object.
+		 * @since 1.1.0
 		 */
 		public UpdateChecker setPermission(@Nonnull String permission) {this.permission = permission; return this;}
 		/**
@@ -142,6 +188,7 @@ public class KeesLib {
 		 * @param frequency Default: {@code 1L}.
 		 * @param timeUnit Default: {@code TimeUnit.HOURS}.
 		 * @return a reference to this object.
+		 * @since 1.1.0
 		 */
 		public UpdateChecker setUpdateFrequency(@Nonnull Long frequency, @Nonnull TimeUnit timeUnit) {this.frequency = frequency; this.timeUnit = timeUnit; return this;}
 		public UpdateChecker(Integer recourceID) {this.recourceID = recourceID;}
