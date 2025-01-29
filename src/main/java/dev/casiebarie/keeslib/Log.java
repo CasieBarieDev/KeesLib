@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Log extends Logger {
 	final String prefix;
-	public Log(JavaPlugin plugin) {
+	protected Log(JavaPlugin plugin) {
 		super(plugin.getName(), null);
 		prefix = plugin.getDescription().getPrefix();
 		setParent(plugin.getServer().getLogger());
